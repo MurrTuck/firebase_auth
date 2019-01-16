@@ -1,13 +1,14 @@
-//get data
-db.collection('guides').get().then(snapshot => {
-    setupGuides(snapshot.docs)
-})
+
 
 //Listen for auth changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log('user logged in: ', user)
+        db.collection('guides').get().then(snapshot => {
+            setupGuides(snapshot.docs)
+        })
+        console.log('user logged in:', user)
     } else {
+        setupGuides([])
         console.log('user logged out')
     }
 })
