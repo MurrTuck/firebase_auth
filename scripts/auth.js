@@ -1,8 +1,23 @@
+// add admin cloud function
+const adminForm = document.querySelector('.admin-actions');
+adminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const adminEmail = document.querySelector('#admin-email').value;
+    const addAdminRole = functions.httpsCallable('addAdminRole');
+    addAdminRole({ email: adminEmail }).then(result => {
+        console.log(result);
+    })
+})
+
 
 //Listen for auth changes
 auth.onAuthStateChanged(user => {
     console.log(user)
     if (user) {
+        user.getIdTokenResult().then(idTokenResult => {
+            user.admin = idTokenResult.claims.admin;
+        })
         db.collection('guides').onSnapshot(snapshot => {
             setupGuides(snapshot.docs)
             setupUI(user);
@@ -15,6 +30,7 @@ auth.onAuthStateChanged(user => {
         setupGuides([])
         console.log('user logged out')
     }
+
 })
 
 //create new guide

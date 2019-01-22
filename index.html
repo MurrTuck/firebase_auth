@@ -20,7 +20,7 @@
             <li class="logged-in" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
             </li>
-            <li class="logged-in" style="display: none;">
+            <li class="admin" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
             </li>
             <li class="logged-in" style="display: none;">
@@ -36,6 +36,13 @@
         </ul>
     </div>
     </nav>
+
+    <!-- ADMIN ACTIONS -->
+    <form class="center-align admin-actions admin" style="margin: 40px auto; max-width: 300px; display: none;">
+        <input type="email" placeholder="User email" id="admin-email" required />
+        <button class="btn-small purple darken-2 z-depth-0">Make admin</button>
+    </form>
+
     <!-- SIGN UP MODAL -->
     <div id="modal-signup" class="modal">
         <div class="modal-content">
@@ -74,7 +81,7 @@
                     <input type="password" id="login-password" required />
                     <label for="login-password">Your password</label>
                 </div>
-                <button class="btn yellow darken-2 z-depth-0">Login</button>
+                <button class="btn purple darken-2 z-depth-0">Login</button>
             </form>
         </div>
     </div>
